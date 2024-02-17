@@ -18,6 +18,22 @@ function classNames(...classes) {
 
 export default function Example() {
   return (
+    <>
+    <style>
+      {`
+        @media (max-width: 640px) {
+          .search {
+            display: none !important;
+          }
+          .searchbox {
+            width: 80% !important; /* Change to a suitable width value */
+          }
+          .logo {
+            margin-left: 3rem; /* Add margin to the left of the logo */
+          }
+        }
+      `}
+    </style>
     <Disclosure as="nav" className="bg-amber-950">
       {({ open }) => (
         <>
@@ -35,12 +51,12 @@ export default function Example() {
                   )}
                 </Disclosure.Button>
               </div>
-              <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                <div className="flex flex-shrink-0 items-center">
-                  <Link to="/"><img className="h-8 w-auto" src={logo1} alt="Your Company" /></Link>
+              <div className="flex flex-1" style={{height:'70px'}}>
+                <div className="flex flex-shrink-0 items-center  md:ms-5">
+                  <Link to="/" className="logo"><img className="h-8 w-auto" src={logo1} alt="Your Company" /></Link>
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
-                  <div className="flex space-x-4">
+                  <div className="flex space-x-4 mt-4">
                     {navigation.map((item) => (
                       <Link
                         key={item.name}
@@ -57,17 +73,17 @@ export default function Example() {
                   </div>
                 </div>
               </div>
-                <form className="max-w-md mx-auto pt-3 w-1/3">
-                  <label className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-                  <div className="relative">
-                    <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                      <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                      </svg>
-                    </div>
-                    <input type="search" id="default-search" className="col-span-2 block w-full p-4 ps-10 text-sm text-white border border-gray-300 rounded-lg bg-transparent focus:ring-white focus:border-white dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+              <form className="searchbox search max-w-md mx-auto pt-3 w-1/3">
+                <label className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                    <svg className="search w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                    </svg>
                   </div>
-                </form>
+                  <input type="search" id="default-search" placeholder='Search' className="col-span-2 block w-full p-4 ps-10 text-sm text-white border border-gray-300 rounded-lg bg-transparent focus:ring-white focus:border-white dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-100 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                </div>
+              </form>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">
@@ -129,7 +145,8 @@ export default function Example() {
             </div>
           </div>
 
-          <Disclosure.Panel className="sm:hidden">
+          <Disclosure.Panel className="sm:hidden ">
+            <div className='flex justify-center '><input type="text" className='rounded bg-transparent' style={{width:'90%'}} placeholder='Search' /></div>
             <div className="space-y-1 px-2 pb-3 pt-2">
               {navigation.map((item) => (
                 <Disclosure.Button
@@ -150,5 +167,6 @@ export default function Example() {
         </>
       )}
     </Disclosure>
+    </>
   )
 }

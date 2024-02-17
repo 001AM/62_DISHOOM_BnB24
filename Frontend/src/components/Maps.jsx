@@ -18,16 +18,10 @@ function Map() {
     });
 
     map.on('load', () => {
-      const layers = map.getStyle().layers;
-      const labelLayerId = layers.find(
-        (layer) => layer.type === 'symbol' && layer.layout['text-field']
-      ).id;
-
       // Coordinates for the line
       const lineCoordinates = [
         [72.818302, 19.205649],
-        [72.93627602340445, 18.959732630284932],
-        [72.83627602340445, 18.959732630284932]
+        [72.93627602340445, 18.959732630284932]
       ];
 
       // Calculate the distance between the first two coordinates
@@ -77,30 +71,6 @@ function Map() {
       })
         .setLngLat([72.93627602340445, 18.959732630284932])
         .addTo(map);
-      new mapboxgl.Marker({
-        draggable: false
-      })
-        .setLngLat([72.83627602340445, 18.959732630284932])
-        .addTo(map);
-
-      // Add 3D buildings layer
-      map.addLayer(
-        {
-          id: 'add-3d-buildings',
-          source: 'composite',
-          'source-layer': 'building',
-          filter: ['==', 'extrude', 'true'],
-          type: 'fill-extrusion',
-          minzoom: 15,
-          paint: {
-            'fill-extrusion-color': '#aaa',
-            'fill-extrusion-height': ['interpolate', ['linear'], ['zoom'], 15, 0, 15.05, ['get', 'height']],
-            'fill-extrusion-base': ['interpolate', ['linear'], ['zoom'], 15, 0, 15.05, ['get', 'min_height']],
-            'fill-extrusion-opacity': 0.6
-          }
-        },
-        labelLayerId
-      );
     });
 
     // Cleanup map when component is unmounted
@@ -112,7 +82,7 @@ function Map() {
   }, []);
 
   return (
-    <div className='d-flex justify-content-center'>
+    <div style={{ display: 'flex', justifyContent: 'center', height: '100vh' }}>
       <style>{`
         .mapBox {
           width: 80%; /* Adjust the width for responsiveness */
