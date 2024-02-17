@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = '';
+const baseURL = 'https://api.interv.co.in';
 
 const axiosInstance = axios.create({
 	baseURL: baseURL,

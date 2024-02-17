@@ -6,6 +6,8 @@ import Register from '../../pages/register/register';
 import Login from '../../pages/login/login';
 // import Chat from '../../pages/messages/chat';
 import Profile from '../../pages/profiles/profile';
+import ForgotPassword from '../../pages/login/forgot';
+import ConfirmPassword from '../../pages/login/confirmpassword';
 // import Dashboard from '../../pages/Dashboard/dashboard';
 import UserInfo from '../../pages/userinfo/userinfo';
 
@@ -34,6 +36,16 @@ const routesConfig = [
         element: <UserInfo />,
       }
     ],
+  },
+  {
+    path:'forgotpassword',
+    index:true,
+    element:<ForgotPassword />,
+  },
+  {
+    path:'resetpassword/:token',
+    index:true,
+    element:<ConfirmPassword />,
   },
   {
     path: '*',
