@@ -10,6 +10,7 @@ import ForgotPassword from '../../pages/login/forgot';
 import ConfirmPassword from '../../pages/login/confirmpassword';
 // import Dashboard from '../../pages/Dashboard/dashboard';
 import UserInfo from '../../pages/userinfo/userinfo';
+import Maps from "../../pages/Maps/Maps"
 
 
 const routesConfig = [
@@ -29,6 +30,11 @@ const routesConfig = [
         path:'/profile',
         index: true,
         element: <Profile />,
+      },
+      {
+        path:'/maps',
+        index: true,
+        element: <Maps/>,
       },
       {
         path:'/userinfo',
