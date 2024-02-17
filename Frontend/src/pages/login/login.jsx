@@ -3,7 +3,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ExampleContext from '../../context/Context';
 import axiosInstance from '../../axios';
-import { ToastContainer, toast } from 'react-toastify';
+// import { ToastContainer, toast } from 'react-toastify';
 import './login.css'; // Reuse the styling file
 // import { FcGoogle } from "react-icons/fc";
 // import { FaGithub, FaFacebook } from "react-icons/fa6";
@@ -42,7 +42,7 @@ const Login = () => {
                     localStorage.setItem('refresh_token', res.data.refresh);
                     axiosInstance.defaults.headers['Authorization'] =
                         'JWT ' + localStorage.getItem('access_token');
-                    toast.success('success')
+                    // toast.success('success')
                     setLogin(true)
                     navigate('/home')
                     //console.log(res);
@@ -50,7 +50,7 @@ const Login = () => {
                 })
                 .catch((error) => {
                     console.error('Error:', error);
-                    toast.error("Registration failed");
+                    // toast.error("Registration failed");
                 })
         } catch (error) {
             // Handle the error, e.g., show an error message to the user
@@ -101,7 +101,8 @@ const Login = () => {
 
                 </form>
             </div>
-            <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick={false} rtl={false} pauseOnFocusLoss draggable pauseOnHover />
+            {/* <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick={false} rtl={false} pauseOnFocusLoss draggable pauseOnHover /> */}
+            
         </div>
     );
 };
