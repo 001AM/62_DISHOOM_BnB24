@@ -7,6 +7,7 @@ import Login from '../../pages/login/login';
 // import Chat from '../../pages/messages/chat';
 import Profile from '../../pages/profiles/profile';
 // import Dashboard from '../../pages/Dashboard/dashboard';
+import UserInfo from '../../pages/userinfo/userinfo';
 
 
 const routesConfig = [
@@ -27,6 +28,11 @@ const routesConfig = [
         index: true,
         element: <Profile />,
       },
+      {
+        path:'/userinfo',
+        index: true,
+        element: <UserInfo />,
+      }
     ],
   },
   {
