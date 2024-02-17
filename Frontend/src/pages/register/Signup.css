@@ -1,0 +1,13 @@
+/* Signup.css */
+body {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+}
+
+body::-webkit-scrollbar {
+    width: 12px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
