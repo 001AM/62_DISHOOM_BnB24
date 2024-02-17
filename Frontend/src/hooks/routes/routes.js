@@ -4,6 +4,7 @@ import Home from '../../pages/Home/Home';
 import NotFound from '../../pages/NotFound/NotFound';
 import Register from '../../pages/register/register';
 import Login from '../../pages/login/login';
+import Product from '../../pages/Product/Product';
 // import Chat from '../../pages/messages/chat';
 import Profile from '../../pages/profiles/profile';
 import ForgotPassword from '../../pages/login/forgot';
@@ -13,11 +14,13 @@ import UserInfo from '../../pages/userinfo/userinfo';
 import Maps from "../../pages/Maps/Maps"
 
 
+
 const routesConfig = [
   {
     path: '/register',
     element: <Register />,
   },
+  
   {
     path: '/login',
     element: <Login />,
@@ -26,6 +29,10 @@ const routesConfig = [
     path: '', // Use an empty string for the root route
     element: <BaseLayout />,
     children: [
+      {
+        path: '/Product',
+        element: <Product />,
+      },
       {
         path:'/profile',
         index: true,
