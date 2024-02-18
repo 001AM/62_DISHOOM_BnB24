@@ -27,7 +27,7 @@ function Product() {
   };
   useEffect(() => {
     axios
-      .get(`${BASE_URL}/product/get_products/${product_id}`)
+      .get(`${BASE_URL}/product/get_products/?product_id=${product_id}`)
       .then((res) => {
         const itemsData = res?.data?.images.map((item, index) => ({
           image: `${BASE_URL}${item.product_image}`,

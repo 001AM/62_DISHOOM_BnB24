@@ -27,7 +27,7 @@ const Login = () => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
-
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
         const PostData = new FormData()
@@ -41,7 +41,7 @@ const Login = () => {
                     localStorage.setItem('access_token', res.data.access);
                     localStorage.setItem('refresh_token', res.data.refresh);
                     axiosInstance.defaults.headers['Authorization'] =
-                        'JWT ' + localStorage.getItem('access_token');
+                        'Bearer  ' + localStorage.getItem('access_token');
                     // toast.success('success')
                     setLogin(true)
                     navigate('/home')
