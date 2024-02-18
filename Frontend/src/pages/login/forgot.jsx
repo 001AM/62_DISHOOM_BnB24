@@ -1,7 +1,5 @@
 import axios from "axios";
 import React, { useState } from "react";
-import axiosInstance from "../../axios";
-
 import arrow from "../../assets/arrow-right.svg";
 function ForgotPassword() {
   const [email, setEmail] = useState("");

@@ -30,7 +30,7 @@ const routesConfig = [
     element: <BaseLayout />,
     children: [
       {
-        path: '/Product',
+        path: '/product/:product_id',
         element: <Product />,
       },
       {
