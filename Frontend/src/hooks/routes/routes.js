@@ -12,6 +12,7 @@ import ConfirmPassword from '../../pages/login/confirmpassword';
 // import Dashboard from '../../pages/Dashboard/dashboard';
 import UserInfo from '../../pages/userinfo/userinfo';
 import Maps from "../../pages/Maps/Maps"
+import Scan from '../../pages/Scan/Scan';
 
 
 
@@ -47,6 +48,11 @@ const routesConfig = [
         path:'/analytics',
         index: true,
         element: <Maps/>,
+      },
+      {
+        path:'/scan',
+        index: true,
+        element: <Scan/>,
       },
       {
         path:'/userinfo',

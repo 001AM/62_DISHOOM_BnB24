@@ -7,6 +7,7 @@ import BASE_URL from "../../config";
 import Stack from "@mui/material/Stack";
 import ReviewCard from "../../components/ReviewCard";
 import axiosInstance from "../../axios";
+import { Link } from "react-router-dom";
 function Product() {
   const { product_id } = useParams();
   const [images, setImages] = useState([]);
@@ -148,9 +149,11 @@ function Product() {
             Anaylitcs
           </div>
         </div>
+        <div className="flex justify-center items-center ">
+        <Link to="/analytics" className="bg-green-500 p-4 rounded-lg text-white">See More Anaylitcs</Link></div>
       </div>
-
-      <div className="col-span-1 sm:col-span-6 md:col-span-12">Anay</div>
+      
+      {/* <div className="col-span-1 sm:col-span-6 md:col-span-12"></div> */}
       <div className="col-span-1 sm:col-span-6 md:col-span-12">
         <div
           className="col-span-12 p-4 rounded-lg shadow-xl card"
