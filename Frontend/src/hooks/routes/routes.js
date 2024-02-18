@@ -44,7 +44,7 @@ const routesConfig = [
         element: <Profile />,
       },
       {
-        path:'/maps',
+        path:'/analytics',
         index: true,
         element: <Maps/>,
       },
