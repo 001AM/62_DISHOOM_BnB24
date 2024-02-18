@@ -29,7 +29,7 @@ function Product() {
   };
   useEffect(() => {
     axios
-      .get(`${BASE_URL}/product/get_products/${product_id}`)
+      .get(`${BASE_URL}/product/get_products/?product_id=${product_id}`)
       .then((res) => {
         const itemsData = res?.data?.images.map((item, index) => ({
           image: `${BASE_URL}${item.product_image}`,
@@ -202,13 +202,13 @@ function Product() {
       </div>
       <div className="col-span-1 sm:col-span-6 md:col-span-12">
         {allComment && allComment.map((data, index) => (
-  <ReviewCard
-    key={index} // Add a unique key prop for each item in the list
-    customerName={data?.username}
-    rating={data?.rating}
-    review={data?.comment}
-  />
-))}
+          <ReviewCard
+            key={index} // Add a unique key prop for each item in the list
+            customerName={data?.username}
+            rating={data?.rating}
+            review={data?.comment}
+          />
+        ))}
 
       </div>
     </div>

@@ -1,4 +1,7 @@
-import React, { useEffect, useState } from 'react';
+
+import React, { useState, useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import ExampleContext from '../../context/Context';
 import Map from "../../components/Maps"
 import Wastegen from "../../components/Wastegen"
 import Barchart from "../../components/Barchart"
@@ -13,7 +16,9 @@ export default function Maps() {
     const [info, setInfo] = useState('');
     const [env, setEnv] = useState('');
     const [qa, setQa] = useState('Fssai');
-
+    const navigate = useNavigate();
+    const { isLogin, setLogin } = useContext(ExampleContext);
+   
     const handleButtonClick = (buttonName) => {
         setActiveButton(buttonName);
     }

@@ -7,7 +7,7 @@ import profile_img from "../assets/profile.svg"
 
 const navigation = [
   { name: 'Home', href: '/', current: true },
-  { name: 'Products', href: '/product/4', current: false },
+  { name: 'Products', href: '/allproducts', current: false },
   { name: 'Scan', href: '/scan', current: false },
 ]
 

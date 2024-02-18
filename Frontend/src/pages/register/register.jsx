@@ -1,9 +1,21 @@
-import React, { useState } from 'react';
+// src/Login.js
+import React, { useState, useContext, useEffect } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import ExampleContext from '../../context/Context';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import img from "../../assets/Bg.jpg"
 
 const Register = () => {
+    const navigate = useNavigate();
+    const { isLogin, setLogin } = useContext(ExampleContext);
+
+    useEffect(() => {
+        if (isLogin) {
+            navigate('/home');
+        }
+    }, [isLogin, navigate]);
+
+
     const [formData, setFormData] = useState({
         username: '',
         first_name: '',
