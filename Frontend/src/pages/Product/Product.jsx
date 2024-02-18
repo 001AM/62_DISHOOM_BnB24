@@ -7,6 +7,7 @@ import ReviewCard from "../../components/ReviewCard";
 import axiosInstance from "../../axios";
 import { Link } from "react-router-dom";
 import { QRCodeCanvas } from "qrcode.react";
+import Percentagechart from "../../components/Percentagechart"
 function Product() {
   const { product_id } = useParams();
   const [images, setImages] = useState([]);
@@ -15,14 +16,11 @@ function Product() {
   const [comment, setComment] = useState("");
   const [info, setInfo] = useState();
   const [allComment, setAllComment] = useState();
-  // Function to handle star rating click
-
   const handleStarClick = (rating) => {
     setStarRating(rating);
   };
 
-  // Number of reviews and total number of reviews
-  const numberOfReviews = 103;
+   const numberOfReviews = 103;
   const totalReviews = 5;
 
   const handleImageClick = (index) => {
@@ -39,26 +37,26 @@ function Product() {
         setInfo(res?.data);
         console.log(itemsData);
         axios
-        .get(`${BASE_URL}/comment/get_comments/?product_id=${product_id}`)
-        .then((res) => {
+          .get(`${BASE_URL}/comment/get_comments/?product_id=${product_id}`)
+          .then((res) => {
             console.log(res?.data)
-          setAllComment(res?.data);
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-        });
+            setAllComment(res?.data);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
       })
       .catch((error) => {
         console.error("Error:", error);
       });
-   
+
   }, [product_id]);
   const handleComment = (e) => {
     setComment(`${e.target.value}`);
   };
   console.log(allComment)
   const PostSubmit = () => {
-    console.log(comment,starRating)
+    console.log(comment, starRating)
     const formdata = new FormData();
     formdata.append('comment', comment);
     formdata.append('rating', starRating);
@@ -71,19 +69,19 @@ function Product() {
         setStarRating(0)
         setComment("")
         const newComment = {
-            "comment": comment,
-            "rating": starRating,
-            "user": {
-              'username':'soham'
-            },
-            "product": {
-              // product details
-            }
-          };
-      
-          // Update the state by appending the new comment
+          "comment": comment,
+          "rating": starRating,
+          "user": {
+            'username': 'soham'
+          },
+          "product": {
+            // product details
+          }
+        };
+
+        // Update the state by appending the new comment
         setAllComment(prevComments => [...prevComments, newComment]);
-        
+
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -137,6 +135,12 @@ function Product() {
           </div>
         </div>
       </div>
+      <div className="flex flex-row w-full">
+        <Percentagechart />
+        <Percentagechart />
+        <Percentagechart />
+        <Percentagechart />
+      </div>
       <div className="flex flex-col col-span-1 md:col-span-5 sm:col-span-6">
         <span className="text-xl font-bold sm:text-2xl">{info?.name}</span>
         <span>{info?.description}</span>
@@ -157,9 +161,9 @@ function Product() {
           </div>
         </div>
         <div className="flex justify-center items-center ">
-        <Link to="/analytics" className="bg-green-500 p-4 rounded-lg text-white9">See More Anaylitcs</Link></div>
+          <Link to="/analytics" className="bg-green-500 p-4 rounded-lg text-white9">See More Anaylitcs</Link></div>
       </div>
-      
+
       {/* <div className="col-span-1 sm:col-span-6 md:col-span-12"></div> */}
       <div className="col-span-1 sm:col-span-6 md:col-span-12">
         <div
@@ -173,9 +177,8 @@ function Product() {
               {[1, 2, 3, 4, 5].map((rating) => (
                 <span
                   key={rating}
-                  className={`cursor-pointer ${
-                    rating <= starRating ? "text-yellow-500" : "text-gray-300"
-                  }`}
+                  className={`cursor-pointer ${rating <= starRating ? "text-yellow-500" : "text-gray-300"
+                    }`}
                   onClick={() => handleStarClick(rating)}
                 >
                   ★
