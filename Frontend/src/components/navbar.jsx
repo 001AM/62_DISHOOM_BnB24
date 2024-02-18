@@ -1,10 +1,12 @@
-import { Fragment, useState } from 'react'
+import React, { Fragment, useState, useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import ExampleContext from '../context/Context';
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link } from 'react-router-dom'
 import logo1 from "../assets/Logo1.png"
 import profile_img from "../assets/profile.svg"
-
+import axiosInstance from '../axios';
 const navigation = [
   { name: 'Home', href: '/', current: true },
   { name: 'Products', href: '/allproducts', current: false },
@@ -17,9 +19,29 @@ function classNames(...classes) {
 
 export default function Example() {
   const [currentItem, setCurrentItem] = useState(navigation.find(item => item.current)?.name || '')
-
+  
+  const navigate = useNavigate()
+  const {setLogin, isLogin}= useContext(ExampleContext)
   const handleItemClick = (name) => {
     setCurrentItem(name)
+  }
+  const handleLogout = () => {
+    if(isLogin){
+      axiosInstance.post('/authentication/logout/', {
+        refresh_token: localStorage.getItem('refresh_token'),
+      })
+      .then((res) => {
+        // console.log(res.data)
+      })
+      localStorage.removeItem('access_token');
+      localStorage.removeItem('refresh_token');
+      axiosInstance.defaults.headers['Authorization'] = null;
+      setLogin(false)
+      navigate('/login');
+    } else {
+      navigate('/login')
+    }
+     
   }
 
   return (
@@ -115,14 +137,15 @@ export default function Example() {
                           </a>
                         )}
                       </Menu.Item>
-                      <Menu.Item>
+                      <Menu.Item onClick={handleLogout}>
                         {({ active }) => (
-                          <a
-                            href="#"
+                          <Link 
+                            to="/login"
+                            
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
-                            Sign out
-                          </a>
+                            {isLogin ? `Sign out` :`Login`}
+                          </Link>
                         )}
                       </Menu.Item>
                     </Menu.Items>

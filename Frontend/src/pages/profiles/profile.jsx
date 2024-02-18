@@ -1,11 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import ExampleContext from '../../context/Context';
 import edit from "../../assets/edit.svg";
 import pic from "../../assets/pic.jpg";
 import Modal from "../../components/modals";
 import profile from "../../assets/profile.svg"
 
 function Profile() {
+  const navigate = useNavigate();
+    const { isLogin, setLogin } = useContext(ExampleContext);
 
+    useEffect(() => {
+        if (!isLogin) {
+            navigate('/login');
+        }
+    }, [isLogin, navigate]);
 
   const [avatarInfo, setAvatarInfo] = useState({
     name: "Soham",

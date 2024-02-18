@@ -6,6 +6,7 @@ import Stack from "@mui/material/Stack";
 import ReviewCard from "../../components/ReviewCard";
 import axiosInstance from "../../axios";
 import { Link } from "react-router-dom";
+import { QRCodeCanvas } from "qrcode.react";
 function Product() {
   const { product_id } = useParams();
   const [images, setImages] = useState([]);
@@ -139,6 +140,14 @@ function Product() {
       <div className="flex flex-col col-span-1 md:col-span-5 sm:col-span-6">
         <span className="text-xl font-bold sm:text-2xl">{info?.name}</span>
         <span>{info?.description}</span>
+        <span>QR CODE: <QRCodeCanvas
+            id="qrCode"
+            size={200}
+            bgColor={"#00ff00"}
+            level={"H"}
+            value={JSON.stringify(`http://localhost:3000/product/${info?.id}`)}
+          />
+        </span>
       </div>
 
       <div className="flex items-center col-span-1 mx-4 overflow-x-auto border-b-4 border-black md:flex sm:col-span-6 md:col-span-12 md:mx-10">

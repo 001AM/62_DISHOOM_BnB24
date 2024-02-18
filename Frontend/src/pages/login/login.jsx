@@ -90,7 +90,7 @@ const Login = () => {
                             <input
                                 className="w-full px-3 py-2 mb-3 leading-tight text-gray-700 border rounded focus:outline-none focus:shadow-outline"
                                 name="password" type="password" onChange={(e) => { handleChange(e) }} placeholder="Enter your password" />
-                            <a className="text-gray-600 hover:text-gray-800" href="#">Forgot your password?</a>
+                            <Link className="text-gray-600 hover:text-gray-800" to="/forgotpassword">Forgot your password?</Link>
                         </div>
                         <Link to="/register" style={{color:'black'}}>New User? SignUp</Link>
                         <div className="mb-6">

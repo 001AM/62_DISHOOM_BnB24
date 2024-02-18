@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import ExampleContext from '../../context/Context';
 import Axios from "axios";
 import profileimg from "../../assets/profile.svg";
 
@@ -7,7 +9,7 @@ export default function UserInfo() {
     const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
     const [countryCodes, setCountryCodes] = useState([]);
-
+    
     useEffect(() => {
         Axios.get("https://restcountries.com/v3.1/all")
             .then((response) => {
