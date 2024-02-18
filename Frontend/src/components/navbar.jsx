@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useContext, useEffect, useEffect } from 'react';
+import React, { Fragment, useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ExampleContext from '../context/Context';
 import { Disclosure, Menu, Transition } from '@headlessui/react'
@@ -9,7 +9,7 @@ import profile_img from "../assets/profile.svg"
 import axios from 'axios'
 import axiosInstance from '../axios';
 const navigation = [
-  { name: 'Home', href: '/', current: true },
+  { name: 'Home', href: '/home', current: true },
   { name: 'Products', href: '/allproducts', current: false },
   { name: 'Scan', href: '/scan', current: false },
 ]

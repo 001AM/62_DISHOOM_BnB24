@@ -158,7 +158,7 @@ const Register = () => {
                 <div className=' flex justify-center mb-5'>
                     <button 
                         className="px-4 py-2 text-sm font-bold text-white bg-blue-500 rounded hover:bg-blue-700 md:py-3 md:px-6 focus:outline-none focus:shadow-outline md:text-base" onClick={handleFormSubmit}>
-                            <Link to="/userinfo">Signup</Link>
+                            <Link to="/home">Signup</Link>
                     </button>
                 </div>
             </div>

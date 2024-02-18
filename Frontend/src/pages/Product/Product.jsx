@@ -7,6 +7,9 @@ import ReviewCard from "../../components/ReviewCard";
 import axiosInstance from "../../axios";
 import { Link } from "react-router-dom";
 import { QRCodeCanvas } from "qrcode.react";
+
+import Subcribe from '../../components/Subcribe';
+import Footer from '../../components/Footer';
 import Percentagechart from "../../components/Percentagechart"
 function Product() {
   const { product_id } = useParams();
@@ -20,7 +23,7 @@ function Product() {
     setStarRating(rating);
   };
 
-   const numberOfReviews = 103;
+   const [numberOfReviews, setNumberOfReview] = useState(0);
   const totalReviews = 5;
 
   const handleImageClick = (index) => {
@@ -41,6 +44,7 @@ function Product() {
           .then((res) => {
             console.log(res?.data)
             setAllComment(res?.data);
+            setNumberOfReview(res?.data?.length())
           })
           .catch((error) => {
             console.error("Error:", error);
@@ -134,13 +138,13 @@ function Product() {
             ))}
           </div>
         </div>
-      </div>
+      </div>{/*
       <div className="flex flex-row w-full">
         <Percentagechart />
         <Percentagechart />
         <Percentagechart />
         <Percentagechart />
-      </div>
+      </div> */}
       <div className="flex flex-col col-span-1 md:col-span-5 sm:col-span-6">
         <span className="text-xl font-bold sm:text-2xl">{info?.name}</span>
         <span>{info?.description}</span>
@@ -190,8 +194,8 @@ function Product() {
             </div>
             {/* Review Content */}
           </Stack>
-          <p className="m-2 text-center text-gray-500">
-            {numberOfReviews} reviews based on {totalReviews} total
+          <p className="m-2 text-center text-xl font-semibold text-gray-500">
+            Total {numberOfReviews} reviews
           </p>
           <textarea
             className="w-full p-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -221,6 +225,12 @@ function Product() {
             review={data?.comment}
           />
         ))}
+
+      </div>
+      <div className="col-span-1 sm:col-span-6 md:col-span-12">
+      <Subcribe />
+
+      <Footer className="w-10S" />
 
       </div>
     </div>
