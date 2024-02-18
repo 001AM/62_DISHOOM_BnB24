@@ -34,6 +34,11 @@ const routesConfig = [
         element: <Product />,
       },
       {
+        path: '/Home',
+        element: <Home />,
+      },
+
+      {
         path:'/profile',
         index: true,
         element: <Profile />,

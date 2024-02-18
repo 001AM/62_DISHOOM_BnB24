@@ -82,7 +82,7 @@ function Map() {
   }, []);
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', height: '90vh' }}>
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
       <style>{`
         .mapBox {
           width: 80%; /* Adjust the width for responsiveness */
