@@ -13,6 +13,7 @@ import ConfirmPassword from '../../pages/login/confirmpassword';
 import UserInfo from '../../pages/userinfo/userinfo';
 import Maps from "../../pages/Maps/Maps"
 import Scan from '../../pages/Scan/Scan';
+import Productsall from "../../../src/pages/ProductsAll/Productsall"
 
 
 
@@ -43,6 +44,11 @@ const routesConfig = [
         path:'/profile',
         index: true,
         element: <Profile />,
+      },
+      {
+        path:'/allproducts',
+        index: true,
+        element: <Productsall />,
       },
       {
         path:'/analytics',

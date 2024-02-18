@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import img from "../../assets/Bg.jpg"
 
 const Register = () => {
     const [formData, setFormData] = useState({
@@ -57,8 +58,8 @@ const Register = () => {
     };
 
     return (
-        <div className='grid-cols-1 gap-6 px-2 sm:grid-cols-6 md:grid-cols-12 '>
-            <div className='col-span-1 lg:col-span-8 m-12 border-2 lg:w-2/5 flex-column justify-center items-center mx-auto'>
+        <div className='grid-cols-1 gap-6 px-2 sm:grid-cols-6 md:grid-cols-12 ' > 
+            <div className='bg-white  col-span-1 lg:col-span-8 m-12 border-2 lg:w-2/5 flex-column justify-center items-center mx-auto'>
                 <h1 className='text-center text-xl font-bold'>Sign-Up</h1>
                 <div className='sm:col-span-1 md:col-span-4 lg:col-span-5 m-5'>
                     <label style={{ textAlign: 'initial' }} className="block mb-1 text-sm font-semibold text-gray-700 md:text-base md:mb-2" htmlFor="username">

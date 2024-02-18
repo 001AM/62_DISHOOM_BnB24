@@ -79,15 +79,15 @@ export default function Maps() {
                     </button>
                 </div>
                 <div className='m-12'>
-                    <div className='h-96 w-100' >
+                    <div className='h-auto w-100' >
                         {activeButton === 'Description' && (
                             <h1 style={{width:'100%'}}>{data.description}</h1>
                         )}
                         {activeButton === 'Product Info' && (
-                            <div className='h-full w-full'><Barchart style={{ height: '100%', width: '100%' }} /></div>
+                            <div className='h-full w-full'style={{height:'40vh'}} ><Barchart style={{ height: '100%', width: '100%' }} /></div>
                         )}
                         {activeButton === 'Environmental Impact' && (
-                            <div className="h-full w-full"><Wastegen style={{height:'100%', width:'100%'}}/></div>
+                            <div className="h-full w-full" style={{height:'40vh'}}><Wastegen style={{height:'100%', width:'100%'}}/></div>
                         )}
                         {activeButton === 'Quality Control Metrics' && (
                             <h1 className='font-bold text-2xl flex justify-start'>TradeMarks: {qa}</h1>

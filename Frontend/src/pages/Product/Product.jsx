@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
-import arrow_right from "../../assets/arrow-right.svg";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { getFullUrl } from "../../utils";
 import BASE_URL from "../../config";
 import Stack from "@mui/material/Stack";
 import ReviewCard from "../../components/ReviewCard";
@@ -31,7 +29,7 @@ function Product() {
   };
   useEffect(() => {
     axios
-      .get(`${BASE_URL}/product/get_products/?product_id=${product_id}`)
+      .get(`${BASE_URL}/product/get_products/${product_id}`)
       .then((res) => {
         const itemsData = res?.data?.images.map((item, index) => ({
           image: `${BASE_URL}${item.product_image}`,
@@ -150,7 +148,7 @@ function Product() {
           </div>
         </div>
         <div className="flex justify-center items-center ">
-        <Link to="/analytics" className="bg-green-500 p-4 rounded-lg text-white">See More Anaylitcs</Link></div>
+        <Link to="/analytics" className="bg-green-500 p-4 rounded-lg text-white9">See More Anaylitcs</Link></div>
       </div>
       
       {/* <div className="col-span-1 sm:col-span-6 md:col-span-12"></div> */}
