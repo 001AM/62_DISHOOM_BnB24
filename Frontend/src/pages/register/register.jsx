@@ -17,15 +17,32 @@ const Register = () => {
     const [showTermsError, setShowTermsError] = useState(false);
 
     const updateFormData = (name, value) => {
-        setFormData((prevFormData) => ({
-            ...prevFormData,
-            [name]: value.trim(),
-        }));
+        setFormData((prevFormData) => {
+            const updatedFormData = {
+                ...prevFormData,
+                [name]: typeof value === 'string' ? value.trim() : value,
+            };
+    
+            if (name === 'password' || name === 'confirmPassword') {
+                setPasswordError(
+                    updatedFormData.password !== updatedFormData.confirmPassword
+                        ? 'Passwords do not match'
+                        : ''
+                );
+            }
+    
+            return updatedFormData;
+        });
     };
+    
+    
 
     const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        updateFormData(name, value);
+        const { name, value, checked } = e.target;
+        const inputValue = name === 'termsAccepted' ? checked : value;
+    
+        updateFormData(name, inputValue);
+    
         if (passwordError && (name === 'password' || name === 'confirmPassword')) {
             setPasswordError('');
         }
@@ -36,17 +53,19 @@ const Register = () => {
 
     const handleFormSubmit = async (e) => {
         e.preventDefault();
-
-        if (formData.password !== formData.confirmPassword) {
+    
+        const { password, confirmPassword } = formData;
+    
+        if (password !== confirmPassword) {
             setPasswordError('Passwords do not match');
             return;
         }
-
+    
         if (!formData.termsAccepted) {
             setShowTermsError(true);
             return;
         }
-
+    
         try {
             const response = await axios.post('https://api.interv.co.in/authentication/signup/', formData);
             console.log('Form submitted successfully:', response.data);
@@ -56,6 +75,7 @@ const Register = () => {
             // Handle form submission error
         }
     };
+    
 
     return (
         <div className='grid-cols-1 gap-6 px-2 sm:grid-cols-6 md:grid-cols-12 ' > 
