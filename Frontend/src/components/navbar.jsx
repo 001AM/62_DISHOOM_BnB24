@@ -2,14 +2,13 @@ import { Fragment, useState } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link } from 'react-router-dom'
-import logo1 from "../assets/logo.svg"
+import logo1 from "../assets/Logo1.png"
 import profile_img from "../assets/profile.svg"
 
 const navigation = [
   { name: 'Home', href: '/', current: true },
   { name: 'Products', href: '/product', current: false },
   { name: 'Scan', href: '/scan', current: false },
-  { name: 'Calendar', href: '#', current: false },
 ]
 
 function classNames(...classes) {

@@ -9,7 +9,7 @@ export default function Maps() {
     const [data, setData] = useState('')
     const [name, setName] = useState('Product Name')
     const [activeButton, setActiveButton] = useState('Description');
-    const [desc, setDesc] = useState('`GIVE A FRESH START TO YOUR DAY with a sip of NESCAFE Classic Instant Coffee and let the bold taste with rich aroma of the instant coffee awaken your senses to new opportunities. 100% PURE COFFEE: NESCAFE Classic Instant Coffee is made from handpicked Robusta beans from South India that are slow-roasted to achieve the signature NESCAFE aroma. The perfect coffee flavour is extracted & locked in every coffee bean for the perfect cup at any time. EASY & CONVENIENT: NESCAFE offers a delightful coffee experience in a totally convenient way! You can be your own coffee artist and get great tasting coffee at home with the easy-to-prepare instant coffee powder. UNMISTAKABLE FLAVOUR: NESCAFE Classic Instant Coffee takes your coffee experiences to the next level with its unmistakable flavour. This instant coffee is made from roasted coffee beans that will make a coffee lover smile with sheer delight. It’s a coffee made for coffee lovers who enjoy a perfect blend. COMMONLY SEARCHED: coffee beans, coffee jar, morning coffee, roasted coffee beans, coffee beans roasted, fresh coffee beans, coffee nescafe, nescafe coffee morning, nescafe coffee kit, instant coffee, nescafe coffee kit, nescafe coffee mug, coffee kits, nescafe coffee classic, how to make nescafe classic coffee, coffee powder, coffee`');
+    const [desc, setDesc] = useState('');
     const [info, setInfo] = useState('');
     const [env, setEnv] = useState('');
     const [qa, setQa] = useState('Fssai');
@@ -21,7 +21,7 @@ export default function Maps() {
     useEffect(() => {
         async function getdata() {
           try {
-            const res = await axios.get('https://api.interv.co.in/product/get_products/?product_id=6');
+            const res = await axios.get('https://api.interv.co.in/product/get_products/?product_id=4');
             setData(res.data)
             console.log(res.data)
           } catch (error) {
@@ -79,9 +79,9 @@ export default function Maps() {
                     </button>
                 </div>
                 <div className='m-12'>
-                    <div className='h-96 w-96' >
+                    <div className='h-96 w-100' >
                         {activeButton === 'Description' && (
-                            <h1 style={{width:'100%'}}>{desc}</h1>
+                            <h1 style={{width:'100%'}}>{data.description}</h1>
                         )}
                         {activeButton === 'Product Info' && (
                             <div className='h-full w-full'><Barchart style={{ height: '100%', width: '100%' }} /></div>
@@ -90,7 +90,7 @@ export default function Maps() {
                             <div className="h-full w-full"><Wastegen style={{height:'100%', width:'100%'}}/></div>
                         )}
                         {activeButton === 'Quality Control Metrics' && (
-                            <h1 className='font-bold text-2xl flex justify-center'>{qa}</h1>
+                            <h1 className='font-bold text-2xl flex justify-start'>TradeMarks: {qa}</h1>
                         )}
                     </div>
                 </div>

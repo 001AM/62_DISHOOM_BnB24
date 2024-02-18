@@ -28,7 +28,7 @@ class PieChartComponent extends PureComponent {
   render() {
     return (
       <ResponsiveContainer width="100%" height="100%">
-        <PieChart width={400} height={400} >
+        <PieChart width={800} height={800} >
           <Pie
             data={data}
             cx="50%"
@@ -36,7 +36,7 @@ class PieChartComponent extends PureComponent {
             labelLine={false}
             label={(props) => renderCustomizedLabel({ ...props, name: data[props.index].name })}
             outerRadius={80}
-            fill="#8884d8"
+            fill="#000000"
             dataKey="value"
           >
 
